@@ -14,13 +14,15 @@ jobs:
     - name: Check Out Repository
       id: checkout_repository
       uses: actions/checkout@v2
-        
+    - name: getreponame
+      env: pathname = ${{ github.event.repository.full_name }}
+      run: echo  $pathname  
     # Connect or Create the Azure Machine Learning Workspace
-    - name: deploy all resources
-      id: aml_configure
-      uses: ashishonce/aml_configure@master
-      with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          armtemplate_file: "deploy.json"
-          armtemplateparams_file: "deploy.params.json"
-          resource_group: "ashkuma_functionAppRsGroup"
+#     - name: deploy all resources
+#       id: aml_configure
+#       uses: ashishonce/aml_configure@master
+#       with:
+#           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+#           armtemplate_file: "deploy.json"
+#           armtemplateparams_file: "deploy.params.json"
+#           resource_group: "ashkuma_functionAppRsGroup"
