@@ -15,8 +15,10 @@ jobs:
       id: checkout_repository
       uses: actions/checkout@v2
     - name: getreponame
-      env: pathname = ${{ github.event }}
-      run: echo  $pathname  
+      env: 
+        pathname : ${{ github.event }}
+      run: |
+        echo  $pathname  
     # Connect or Create the Azure Machine Learning Workspace
 #     - name: deploy all resources
 #       id: aml_configure
