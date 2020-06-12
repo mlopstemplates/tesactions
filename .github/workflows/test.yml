@@ -1,26 +1,21 @@
-# Test Actions train a model on Azure Machine Learning
-name: aml-train-deploy-workflow 
-on:
-  push:
-    branches:
-      - master
-    # paths:
-    #   - 'code/*'
+name: Integration Test
+on: [push]
 jobs:
-  train:
+  build:
     runs-on: ubuntu-latest
+    env:
+      pathname: ${{ github.event.payload.ref }}  
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Check Out Repository
-      id: checkout_repository
-      uses: actions/checkout@v2
-    - name: getreponame
-      env: 
-        pathname: ${{ github.event.payload.ref }}
-      run: |
-        $pathname = $env:pathname
-        echo  $pathname
-    # Connect or Create the Azure Machine Learning Workspace
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@master
+        with:
+          ref: ${{github.ref}}
+
+      - name: secretBash	
+        run: |
+          echo  $env:pathname
+# Connect or Create the Azure Machine Learning Workspace
 #     - name: deploy all resources
 #       id: aml_configure
 #       uses: ashishonce/aml_configure@master
