@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      pathname: ${{ github.event.payload.ref }}  
+      azure_cred: ${{ secrets.AZURE_CREDENTIALS }}  
     steps:
       - name: Check Out Repository
         id: checkout_repository
@@ -14,9 +14,10 @@ jobs:
 
       - name: secretBash	
         run: |
-          $pathname = $env:pathname
-          echo  $pathname
-          echo ${{ github.event.repo }}
+          $azure_cred = $env:azure_cred
+          echo $azure_cred
+          sed -i -e 's/TESTSERVICENAME/'$azure_cred'/g' .cloud/.azure/test/test_deploy.json
+          
 # Connect or Create the Azure Machine Learning Workspace
 #     - name: deploy all resources
 #       id: aml_configure
