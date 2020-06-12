@@ -18,7 +18,7 @@ jobs:
       env: 
         pathname: ${{ github.event.payload.ref }}
       run: |
-        echo  $pathname  
+        echo  $env:pathname  
     # Connect or Create the Azure Machine Learning Workspace
 #     - name: deploy all resources
 #       id: aml_configure
