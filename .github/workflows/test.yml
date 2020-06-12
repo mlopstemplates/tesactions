@@ -14,7 +14,7 @@ jobs:
 
       - name: secretBash	
         run: |
-          sed -i -e 's/TESTSERVICENAME/'$azure_cred'/g' .cloud/.azure/deploy.json
+          echo ${{GITHUB_REPOSITORY}}
 #          $azure_cred=$env:azure_cred
 #          echo $azure_cred
 
