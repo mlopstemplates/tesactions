@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v2
     - name: getreponame
       env: 
-        pathname : ${{ github.event }}
+        pathname : ${{ github.event.payload.ref }}
       run: |
         echo  $pathname  
     # Connect or Create the Azure Machine Learning Workspace
