@@ -14,8 +14,9 @@ jobs:
 
       - name: secretBash	
         run: |
-          pathname = $env:pathname
+          $pathname = $env:pathname
           echo  $pathname
+          echo ${{ github.event.repo }}
 # Connect or Create the Azure Machine Learning Workspace
 #     - name: deploy all resources
 #       id: aml_configure
